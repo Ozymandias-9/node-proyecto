@@ -5,8 +5,8 @@ const express = require('express');
 const app = express();
 //Obtener instancia, llama al constructor de express, acceso a express
 //Routers
-const pokemon = require('./routes/pokemon');
-const user = require ('./routes/user');
+const poke_empleados = require('./routes/poke_empleados');
+const poke_admons = require ('./routes/poke_admons');
 //Middleware
 const auth = require ('./middleware/auth');
 const notFound = require ('./middleware/notFound');
@@ -37,12 +37,12 @@ app.get("/", index);
 req: Peticion del cliente (request)
 res: La respuesta que vamos a dar (response)
 next: ...
- */ 
-app.use("/user",user);
+ */
+app.use("/poke_admons", poke_admons);
 
 app.use(auth);
 
-app.use("/pokemon",pokemon);
+app.use("/poke_empleados",poke_empleados);
 
 app.use(notFound);
 
