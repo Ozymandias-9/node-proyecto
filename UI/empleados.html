@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="poke_empleado.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Panel Admons</title>
+    <script src="./js/empleados.js" defer></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="styles/admons_style.css">
+    <link rel="stylesheet" href="styles/dialogstyle.css">
+    <script src="https://kit.fontawesome.com/d2e94dcd74.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div>
+        <h1 class="nombre_pag">¡Bienvenido al Panel de Administradores!</h1>
+        <nav class="nav">
+            <div class="agregar">
+                <button class="agregar" onclick="abrirAgregar()"><i class="fas fa-plus-circle"></i> Agregar</button>
+            </div>
+            <div class="buscador">
+                <i class="fas fa-search lupa"></i>
+                <input class="buscador_bus" type="text" placeholder="Buscar...">
+            </div>
+        </nav>
+    </div>
+    
+    <table class="data_table" id="tabla_datos">
+        <tr class="table_headers">
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Email</th>
+            <th>Dirección</th>
+            <th>Num. Tel.</th>
+            <th></th>
+        </tr>
+    </table>
+
+
+    <div class="popup-container" id="container_agregar">
+        <div class="popup">
+          <button class="exit_button" onclick="cerrarDialogos()">&times;</button>
+          <div class="popup-seccion">
+              <h1 id="agregar_popup_titulo">Agregar Empleado</h1>
+           </div>
+          <div class="popup-seccion">
+            <!-- <div class="row align-items-center contenedor">
+                <div class="col-6 offset-3">
+                    <div class="form-group">
+                        <label for="input-mail">Nombre</label>
+                        <input type="text" class="form-control" id="input_name" placeholder="Brayan">
+                        <small class="form-text text-muted">Tu nombre.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-last_name">Apellido</label>
+                        <input type="text" class="form-control" id="input_last_name" placeholder="Hernández Cortés">
+                        <small class="form-text text-muted">Tu apellido.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-address">Dirección</label>
+                        <input type="text" class="form-control" id="input_address" placeholder="Centro Sur">
+                        <small class="form-text text-muted">Tu dirección.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-phone_number">Número de Teléfono</label>
+                        <input type="text" class="form-control" id="input_phone_number" placeholder="4421234567">
+                        <small class="form-text text-muted"> Tu número de teléfono.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-mail">Correo electrónico</label>
+                        <input type="email" class="form-control" id="input_mail" placeholder="correo@dominio.ext">
+                        <small class="form-text text-muted">Un correo para registrarte.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-password">Contraseña</label>
+                        <input type="password" class="form-control" id="input_password" placeholder="***********">
+                    </div>
+                </div>
+            </div> -->
+            <div class="container">
+                <div class="container_row">
+                    <div class="container_row_box">
+                        <label class="container_row_box-label" for="input-mail">Correo Electrónico</label>
+                        <input class="container_row_box-input" type="mail" id="input-mail" placeholder="ejemplo@gmail.com">
+                        <small class="container_row_box-small">El correo con el que inicias sesión.</small>
+                    </div>
+                    <div class="container_row_box">
+                        <label class="container_row_box-label" for="input-pass">Contraseña</label>
+                        <input class="container_row_box-input" type="password" id="input-password" placeholder="**************">
+                        <small class="container_row_box-small">La contraseña de tu cuenta.</small>
+                    </div>
+                </div>
+            </div>
+          </div>    
+          <div class="popup-seccion">
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-primary">Guardar</button>         
+                <button onclick="cerrarDialogos()" class="btn btn-secondary">Cancelar</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="popup-container" id="container_eliminar">
+        <div class="popup">
+            <button class="exit_button" onclick="cerrarDialogos()">&times;</button>
+            <h1>Eliminar Empleado</h1>
+            <div class="popup-contenido">
+                <p>¿Eliminar el empleado de forma permanente?</p>
+            </div>
+            <div class="popup-acciones">
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-primary">Eliminar</button>
+                    <button onclick="cerrarDialogos()" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

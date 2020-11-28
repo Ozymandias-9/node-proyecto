@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no,initial-scale=1.0,maximun-scale=1.0, minimun-scale=1.0"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <!-- <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+      charset="utf-8"
+    ></script> -->
+  </head>
+
+  <body>
+    <form action="index.html" class="login-form">
+      <h1>Iniciar Sesión</h1>
+      <div class="txtb">
+        <input type="text" required />
+        <span data-placeholder="Email"></span>
+      </div>
+      <div class="txtb">
+        <input type="password" required />
+        <span data-placeholder="Contraseña"></span>
+      </div>
+      <input type="submit" class="logbtn" value="Ingresar" />
+      <div class="bottom-text">
+        ¿No tienes una cuenta? <a href="#">Regístrate</a>
+      </div>
+    </form>
+    <script type="text/javascript">
+      /*$(".txtb input").on("focus", function () {
+      $(this).addClass("focus");
+    });
+    $(".txtb input").on("blur", function () {
+      if ($(this).val() == "") $(this).removeClass("focus");
+    });*/
+      const inputs = document.getElementsByClassName("txtb"); // Obtiene todos los elementos con la clase .txtb
+      for (var item of inputs) {
+        // recorre todos los elementos
+        let input = item.getElementsByTagName("input")[0]; // obtiene los elementos de tipo Input y toma el primero
+        // Agrega un evento cuando se entra al campo de texto
+        input.addEventListener("focus", () => {
+          // Se le agrega la clase 'focus'
+          input.classList.add("focus");
+        });
+        // Agrega un elemento cuando se sale del campo de texto
+        input.addEventListener("blur", () => {
+          // Valida si quedó vació
+          if (input.value == "") {
+            // Se quita la clase 'focus'
+            input.classList.remove("focus");
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
