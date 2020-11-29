@@ -1,6 +1,27 @@
 window.onload = init;
 var headers = {};
-var url = "http://localhost:3000";
+var url = "http://localhost:3000/poke_empleados";
+
+var agregar = true;
+
+const agregar_contenedor = document.getElementById('container_agregar');
+const editar_contenedor = document.getElementById('container_editar');
+const eliminar_contenedor = document.getElementById('container_eliminar');
+
+const agregar_popup_titulo = document.getElementById('agregar_popup_titulo');
+const Btn_Guardar = document.getElementById('Btn_Guardar');
+const eliminar_Texto = document.getElementById('eliminar_Texto');
+
+const Btn_Buscar = document.getElementById("Btn_Buscar");
+const Txt_Buscar = document.getElementById("Txt_Buscar");
+
+const input_name = document.getElementById('input_name');
+const input_last_name = document.getElementById('input_last_name');
+const input_address = document.getElementById('input_address');
+const input_phone_number = document.getElementById('input_phone_number');
+const input_email = document.getElementById('input_email');
+const input_password = document.getElementById('input_password');
+
 
 function init() {
     if (localStorage.getItem("token")) {
@@ -9,69 +30,82 @@ function init() {
                 'Authorization': "bearer " + localStorage.getItem("token")
             } 
         }
-        loadPokemon();
+     loadEmpleados();
     } else { 
         window.location.href = "index.html"
     }
 }
-
-function loadPokemon() {
-    axios.get(url + "/poke_empleados", headers)
-    .then(function(res) { 
-        console.log(res);
-        displayPokemon(res.data.message);
-    }).catch(function(err) {
-        console.log(err);
-    })
+function cerrarSesion (){
+    localStorage.removeItem("token");
+    window.location.href="login.html";
 }
-
-
-const agregar_contenedor = document.getElementById('container_agregar');
-const editar_contenedor = document.getElementById('container_editar');
-const eliminar_contenedor = document.getElementById('container_eliminar');
-const agregar_popup_titulo = document.getElementById('agregar_popup_titulo');
-
-
-const input_name = document.getElementById('input_name');
-const input_last_name = document.getElementById('input_last_name');
-const input_address = document.getElementById('input_address');
-const input_phone_number = document.getElementById('input_phone_number');
-const input_mail = document.getElementById('input_mail');
-const input_password = document.getElementById('input_password');
 
 function abrirAgregar() {
+    agregar = true;
+    agregar_popup_titulo.textContent = `Registrar empleado.`;
     agregar_contenedor.classList.add("active");
+
     agregar_popup_titulo.textContent = "Agregar nuevo empleado.";
 
-    input_name.textContent = "";
-    input_last_name.textContent = "";
-    input_address.textContent = "";
-    input_phone_number.textContent = "";
-    input_mail.textContent = "";
-    input_password.textContent = "";
+    input_name.value = "";
+    input_last_name.value = "";
+    input_address.value = "";
+    input_phone_number.value = "";
+    input_email.value = "";
+    input_password.value = "";
 
 }
-function abrirEditar(id) {
-    var empleado = pokemon[id];
+function abrirEditar(index) {
+    agregar = false;
+    agregar_popup_titulo.textContent = `Editar empleado.`;
     agregar_contenedor.classList.add("active");
-    agregar_popup_titulo.textContent = `Editar ${empleado}.`;
+    console.log("Index: ");
+    console.log(index);
+    
+    let empleado = empleados[index];
 
-    input_name.textContent = empleado.nombre;
-    input_last_name.textContent = empleado.apellido;
-    input_address.textContent = empleado.direccion;
-    input_phone_number.textContent = empleado.telefono;
-    input_mail.textContent = empleado.correo;
-    input_password.textContent = empleado.password;
+    idSelected = empleado.id;
+    console.log("Id Seleccionado: ");
+    console.log(idSelected);
 
-
+    console.log("Empleados desde abrirEditar: ");
+    console.log( empleados)
+    console.log("Empleado seleccionado: ");
+    console.log(empleado);
+    
+    input_name.value = empleado.nombre;
+    input_last_name.value = empleado.apellido;
+    input_address.value = empleado.direccion;
+    input_phone_number.value = empleado.telefono;
+    input_email.value = empleado.correo;
+    input_password.value = empleado.password;
 }
-function abrirEliminar() {
+function botonDialogoClick() {
+    if (agregar == true) {
+        addEmpleado();
+    }
+    else {
+        editEmpleado();
+    }
+}
+function abrirEliminar(index) {
+    let empleado = empleados[index];
+
+    idSelected = empleado.id;
+    console.log("Id Seleccionado: ");
+    console.log(idSelected);
+
+    console.log("Empleados desde abrirEditar: ");
+    console.log( empleados)
+    console.log("Empleado seleccionado: ");
+    console.log(empleado);
+
+    eliminar_Texto.value = `¿Eliminar a ${empleado.nombre} de forma permanente?`;
+
     eliminar_contenedor.classList.add("active");
 }
 
 function cerrarDialogos() {
-    // var dialogo = document.querySelector("popup-container");
-    // dialogo.classList.remove("active");
     const dialogs = document.getElementsByClassName("popup-container");
     for (var dialog of dialogs) { 
         console.log(dialog);
@@ -80,65 +114,18 @@ function cerrarDialogos() {
     }
 }
 
-function displayPokemon(pokemon) {
-    var body = document.querySelector("body");
-    console.log(pokemon);
-    for(var i = 0; i < pokemon.length; i++) {
-        // body.innerHTML += `<h3>${pokemon[i].pok_name}</h3>`;
-        tabla_datos.appendChild(generarFila(pokemon[i]));
+function displayEmpleados() {
+    console.log("Empleados desde displayEmpleados: ");
+    console.log( empleados)
+    limpiarFilas();
+    for(let i = 0; i < empleados.length; i++) {
+        tabla_datos.appendChild(generarFila(empleados[i], i));
     }
 }
 
-function generarFila(admon) {
-    var row = document.createElement("tr");
-    row.className = "table_rowcontent";
-    row.appendChild(generarColumna(admon.nombre));
-    row.appendChild(generarColumna(admon.apellido));
-    row.appendChild(generarColumna(admon.correo));
-    row.appendChild(generarColumna(admon.direccion));
-    row.appendChild(generarColumna(admon.telefono));
-    row.appendChild(generarBotones(admon.id));
-    row.id = admon.id;
-    return row;
-}
-function generarColumna(texto) {
-    var column = document.createElement("td");
-    column.textContent = texto;
-    return column;
-}
-function generarBotones(id) {
-    var column = document.createElement("td");
-    column.appendChild(generarBotonEditar(id));
-    column.appendChild(generarBotonEliminar(id));
-    return column;
-}
-function generarBotonEditar(id) {
-    var boton = document.createElement("button");
-    var span = document.createElement("span");
-    span.className = "far fa-edit";
-    boton.appendChild(span);
-    boton.addEventListener('click', () => {
-        abrirEditar(id);
-    });
-    return boton;
-}
-function generarBotonEliminar(id) {
-    var boton = document.createElement("button");
-    var span = document.createElement("span");
-    span.className = "far fa-trash-alt";
-    boton.appendChild(span);
-    boton.addEventListener('click', () => {
-        abrirEliminar();
-    });
-    return boton;
-}
-function editar_OnClick(e) {
-    //window.open(listClases[e.path[1].id].enlace);
-}
-function eliminar_OnClick(e) {
-    //window.open(listClases[e.path[1].id].enlace);
 
-}
+
+
 
 // const open = document.getElementById('open');
 // const close = document.getElementById('close');
