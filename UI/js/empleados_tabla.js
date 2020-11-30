@@ -56,3 +56,6 @@ function generarBotonEliminar() {
     });
     return boton;
 }
+function buscarEmpleado(){
+    document.querySelector('.Btn-buscar').addEventListener('click', loadEmpleados);
+}

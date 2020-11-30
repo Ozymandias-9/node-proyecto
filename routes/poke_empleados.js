@@ -95,5 +95,33 @@ poke_empleados.get("/", async (req,res,next) => {
 //         }
 //         return res.status(404).send({code: 404, message: "Empleado no encontrado."});
 // });
+poke_empleados.get('/:id([0-9]{1,3})', async (req,res,next) =>{
+    const id = req.params.id;
+    if(req.params.id){
+        const pkmn = await db.query("SELECT * FROM poke_empleados WHERE id="+id+";");
+        return res.status(200).json({code: 200, message: pkmn});
+    }
+    return res.status(400).json({code: 404, message: "Empleado no encontrado."});
+});
+poke_empleados.get('/:nombre([A-Za-z]+)', async (req,res,next) =>{
+    const name = req.params.nombre;
+    const pkmn = await db.query("SELECT * FROM poke_empleados WHERE nombre = '"+name+"'");
+    if (pkmn){
+        return res.status(200).json({code: 200, message: pkmn});
+    }
+    return res.status(404).json({code: 404, message: "Empleado no encontrado."});
+    // if(req.params.nombre.length<0){
+    //     return res.status(200).json({code: 200, message: pkmn});
+    // }
+    // return res.status(404).json({code: 404, message: "Empleado no encontrado."});
+});
 
 module.exports = poke_empleados;
+// pokemon.get('/:name([A-Za-z]+)', async (req, res, next) => {
+//     const name = req.params.name;
+//     const pkmn = await db.query("SELECT * FROM pokemon WHERE nombre='"+ name + "';");
+//         if (pkmn.length>0) {
+//         return res.status(200).json({code: 200, message: pkmn})     
+//         }
+//         return res.status(404).send({code: 404, message: "Empleado no encontrado."});
+// });
