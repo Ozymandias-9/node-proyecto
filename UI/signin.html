@@ -6,57 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pokedex</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>   
     <script src="./js/signin.js"></script>
+    <link rel="stylesheet" href="styles/signin.css">
 </head>
 
 <body>
     <div class="container">
-        <div class="row mt-5">
-            <div class="col-6 offset-3">
-                <h1>Registro</h1>
+        <h1>Registrate</h1>
+        <div class="container_row">
+            <div class="container_row_box">
+                <label class="container_row_box-label" for="input_name">Nombre</label>
+                <input class="container_row_box-input" type="text" id="input_name" placeholder="Brayan">
+                <small class="container_row_box-small">Tu nombre.</small>
+            </div>
+            <div class="container_row_box">
+                <label class="container_row_box-label" for="input_last_name">Apellidos</label>
+                <input class="container_row_box-input" type="text" id="input_last_name" placeholder="Hernández Cortés">
+                <small class="container_row_box-small">Tus apellidos.</small>
             </div>
         </div>
-        <div class="row align-items-center contenedor">
-            <div class="col-6 offset-3">
-                <div class="form-group">
-                    <label for="input-mail">Nombre</label>
-                    <input type="text" class="form-control" id="input-name" placeholder="Brayan">
-                    <small class="form-text text-muted">Tu nombre.</small>
-                </div>
-                <div class="form-group">
-                    <label for="input-last_name">Apellido</label>
-                    <input type="text" class="form-control" id="input-last_name" placeholder="Hernández Cortés">
-                    <small class="form-text text-muted">Tu apellido.</small>
-                </div>
-                <div class="form-group">
-                    <label for="input-address">Dirección</label>
-                    <input type="text" class="form-control" id="input-address" placeholder="Centro Sur">
-                    <small class="form-text text-muted">Tu dirección.</small>
-                </div>
-                <div class="form-group">
-                    <label for="input-phone_number">Número de Teléfono</label>
-                    <input type="text" class="form-control" id="input-phone_number" placeholder="4421234567">
-                    <small class="form-text text-muted"> Tu número de teléfono.</small>
-                </div>
-                <div class="form-group">
-                    <label for="input-mail">Correo electrónico</label>
-                    <input type="email" class="form-control" id="input-mail" placeholder="correo@dominio.ext">
-                    <small class="form-text text-muted">Un correo para registrarte.</small>
-                </div>
-                <div class="form-group">
-                    <label for="input-password">Contraseña</label>
-                    <input type="password" class="form-control" id="input-password" placeholder="***********">
-                </div>
-                <div class="d-flex justify-content-between">
-                    <button class="btn btn-primary">Registrarme</button>
-                    <button class="btn btn-secondary">Iniciar sesión</button>
-                </div>
+        <div class="container_row">
+            <div class="container_row_box">
+                <label class="container_row_box-label" for="input_address">Dirección</label>
+                <input class="container_row_box-input" type="text" id="input_address" placeholder="Centro Sur">
+                <small class="container_row_box-small">Tu dirección.</small>
             </div>
+            <div class="container_row_box">
+                <label class="container_row_box-label" for="input_phone_number">Número de Teléfono</label>
+                <input class="container_row_box-input" type="phone" id="input_phone_number" placeholder="4421234567">
+                <small class="container_row_box-small">Tu número de teléfono.</small>
+            </div>
+        </div>
+        <div class="container_row">
+            <div class="container_row_box">
+                <label class="container_row_box-label" for="input_mail">Correo Electrónico</label>
+                <input class="container_row_box-input" type="mail" id="input_email" placeholder="ejemplo@gmail.com">
+                <small class="container_row_box-small">El correo con el que inicias sesión.</small>
+            </div>
+            <div class="container_row_box">
+                <label class="container_row_box-label" for="input_pass">Contraseña</label>
+                <input class="container_row_box-input" type="password" id="input_password" placeholder="**************">
+                <small class="container_row_box-small">La contraseña de tu cuenta.</small>
+            </div>
+        </div>
+        <div class="botones">
+            <button class="btn btn-primary">Registrarse</button>
+            <button class="btn btn-secondary">Entrar</button>
         </div>
     </div>
 </body>

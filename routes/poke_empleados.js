@@ -105,7 +105,7 @@ poke_empleados.get('/:id([0-9]{1,3})', async (req,res,next) =>{
 });
 poke_empleados.get('/:nombre([A-Za-z]+)', async (req,res,next) =>{
     const name = req.params.nombre;
-    const pkmn = await db.query("SELECT * FROM poke_empleados WHERE nombre = '"+name+"'");
+    const pkmn = await db.query("SELECT * FROM poke_empleados WHERE nombre Like '%"+name+"%'");
     if (pkmn){
         return res.status(200).json({code: 200, message: pkmn});
     }

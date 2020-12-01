@@ -9,17 +9,17 @@ function init (){
         document.querySelector('.btn-primary').addEventListener('click', signin);
     }
     else{
-        window.location.href="pokedex.html";
+        window.location.href="empleados.html";
     }
 }
 
 function signin(){
-    var name = document.getElementById('input-name').value;
-    var last_name = document.getElementById('input-last_name').value;
-    var address = document.getElementById('input-address').value;
-    var phone_number = document.getElementById('input-phone_number').value;
-    var mail = document.getElementById('input-mail').value;
-    var pass = document.getElementById('input-password').value;
+    var name = document.getElementById('input_name').value;
+    var last_name = document.getElementById('input_last_name').value;
+    var address = document.getElementById('input_address').value;
+    var phone_number = document.getElementById('input_phone_number').value;
+    var mail = document.getElementById('input_email').value;
+    var pass = document.getElementById('input_password').value;
 
 
     axios({

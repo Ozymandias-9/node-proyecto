@@ -1,6 +1,5 @@
+var url = "http://localhost:3000/poke_empleados";
 
-var idSelected = 0;
-var empleados = [];
 
 function loadEmpleados() {
     axios.get(url + "/" + Txt_Buscar.value, headers)
@@ -84,3 +83,5 @@ function deleteEmpleado (){
         console.log(err);
     })
 }
+
+loadEmpleados();

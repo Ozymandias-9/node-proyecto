@@ -2,9 +2,9 @@ window.onload = init;
 
 function init (){
     if(!localStorage.getItem("token")){
-        // document.querySelector('.btn-secondary').addEventListener('click', function(){
-        //     window.location.href = "signin.html";
-        // });
+        document.querySelector('.btn-secondary').addEventListener('click', function(){
+            window.location.href = "signin.html";
+        });
     
         document.querySelector('.btn-primary').addEventListener('click', login);
     }
@@ -14,8 +14,8 @@ function init (){
 }
 
 function login(){
-    var mail = document.getElementById('input-mail').value;
-    var pass = document.getElementById('input-password').value;
+    var mail = document.getElementById('input_mail').value;
+    var pass = document.getElementById('input_password').value;
 
     console.log(mail,pass);
 
@@ -32,10 +32,8 @@ function login(){
             localStorage.setItem("token", res.data.message);
             window.location.href = "empleados.html";
         }
-        else{
-            alert("Usuario y/o contraseña incorrecto");
-        }
     }).catch(function(err) {
         console.log(err);
+        alert("Usuario y/o contraseña incorrecto.")
     });
 }
