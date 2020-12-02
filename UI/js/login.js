@@ -21,7 +21,7 @@ function login(){
 
     axios({
         method: 'post',
-        url: 'http://localhost:3000/poke_admons/login',
+        url: 'http://localhost:3000/poke_empleados/login',
         data: {
             correo: mail,
             password: pass

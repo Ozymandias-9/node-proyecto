@@ -35,13 +35,7 @@ function generarBotonEditar() {
     span.className = "far fa-edit";
     boton.appendChild(span);
     boton.addEventListener('click', (e) => {
-        //console.log( "[2] Id de la fila: "+ e.path[2].id );
-        //console.log( "[3] Id de la fila: "+ e.path[3].id );
         abrirEditar(e.path[3].id);
-        // console.log(e.path[2]);
-        // console.log(e.path[2].id);
-        // idSelected = e.path[2].id;
-
     });
     return boton;
 }
@@ -52,7 +46,6 @@ function generarBotonEliminar() {
     boton.appendChild(span);
     boton.addEventListener('click', (e) => {
         abrirEliminar(e.path[3].id);
-        // idSelected = ;
     });
     return boton;
 }

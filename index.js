@@ -22,11 +22,10 @@ app.use(express.urlencoded({ extended: true}));
 
 app.get("/", index);
 
-app.use("/poke_admons", poke_admons);
+// app.use("/poke_admons", poke_admons);
+app.use("/poke_empleados",poke_empleados);
 
 app.use(auth);
-
-app.use("/poke_empleados",poke_empleados);
 
 app.use(notFound);
 
