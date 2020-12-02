@@ -13,7 +13,7 @@
     "express",
     "node"
   ],
-  "author": "Oscar Melchor, Helio Barriga, David Ruiz, Luis Alberto de La Cruz",
+  "author": "Oscar Melchor, Helio Barriga, David Ruiz, Luis Alberto de La Cruz, Brayan Hernández (support)",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",

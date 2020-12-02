@@ -122,3 +122,5 @@ function displayEmpleados() {
         tabla_datos.appendChild(generarFila(empleados[i], i));
     }
 }
+
+//Agradecimientos Especiales a Brayan Hernández Cortés por su apoyo en el proyecto.

@@ -8,7 +8,6 @@ const app = express();
 
 //Routers
 const poke_empleados = require('./routes/poke_empleados');
-const poke_admons = require ('./routes/poke_admons');
 //Middleware
 const auth = require ('./middleware/auth');
 const notFound = require ('./middleware/notFound');
@@ -22,7 +21,6 @@ app.use(express.urlencoded({ extended: true}));
 
 app.get("/", index);
 
-// app.use("/poke_admons", poke_admons);
 app.use("/poke_empleados",poke_empleados);
 
 app.use(auth);
